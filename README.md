@@ -1,5 +1,5 @@
-# xy-wt04-mqtt
-Transmit data from xy-wt04 via MQTT
+# xy-wt04 (digital thermostat) to mqtt
+Transmit data from xy-wt04 via MQTT, using Pi Pico W. Forget about the wireless module that's also available, never got this working.
 
 What you need: at the heart is the XY-WT04 thermocouple adaptor + a thermocouple sensor.
 Add to this a Pi Pico W some lines of script to read the modbus registers (see http://myosuploads3.banggood.com/products/20220717/20220717212911XY-WT04-EN.pdf)
