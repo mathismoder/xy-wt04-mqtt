@@ -4,7 +4,6 @@ from json import dumps
 import network
 import time
 from umqtt.simple import MQTTClient
-
 from secrets import *
 
 wlan = network.WLAN(network.STA_IF)
@@ -33,7 +32,13 @@ try:
     client = mqtt_connect()
 except OSError as e:
     reconnect()
-    
+
+try:
+    host.write_multiple_registers(2, 0x06, [0x00,0x00]) # set target temp to 0 to disable relay
+    host.write_multiple_registers(2, 0x14, [0x01,0x00]) # sleep on, backlight off
+except:
+    pass
+
 while True:
     res = host.read_holding_registers(slave_addr=2, starting_addr=0, register_qty=22)
     d = {
